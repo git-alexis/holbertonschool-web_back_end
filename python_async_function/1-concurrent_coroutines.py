@@ -11,7 +11,7 @@ from typing import List
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n (n: int, max_delay: int) -> List[float]:
+async def wait_n(n: int, max_delay: int) -> List[float]:
     """Do wait_random n times and return a list of delays"""
     tasks = []
     for time in range(n):
