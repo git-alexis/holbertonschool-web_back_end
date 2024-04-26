@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create an async comprehension"""
+"""Create a coroutine called async_comprehension that takes no arguments"""
 
 from typing import List
 
