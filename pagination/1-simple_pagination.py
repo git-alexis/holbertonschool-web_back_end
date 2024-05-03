@@ -40,7 +40,7 @@ class Server:
 
         data = self.dataset()
 
-        if start >= len(data):
+        if start > len(data):
             return []
 
         start, end = index_range(page, page_size)
