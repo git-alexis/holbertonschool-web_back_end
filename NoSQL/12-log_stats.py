@@ -28,5 +28,3 @@ if __name__ == "__main__":
     collection = client.logs.nginx
 
     log_stats(collection)
-
-    client.close()
