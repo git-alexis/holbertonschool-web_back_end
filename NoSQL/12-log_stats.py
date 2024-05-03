@@ -8,7 +8,7 @@ from pymongo import MongoClient
 def log_stats(mongo_collection):
     """ Provides some stats about Nginx logs stored in MongoDB """
 
-    print(f"{mongo_collection.count_documents()} logs")
+    print(f"{mongo_collection.count_documents({})} logs")
 
     print("Methods:")
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
@@ -28,3 +28,5 @@ if __name__ == "__main__":
     collection = client.logs.nginx
 
     log_stats(collection)
+
+    client.close()
