@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Return list of mongo documents using Py """
+""" Return list of mongo documents """
 
 
 def list_all(mongo_collection):
