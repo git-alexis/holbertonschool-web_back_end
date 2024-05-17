@@ -1,9 +1,12 @@
 function getResponseFromAPI() {
   return new Promise((resolve, reject) => {
-    if (true) {
-      resolve();
-    } else {
-      reject();
-    }
+    setTimeout(() => {
+      const success = true;
+      if (success) {
+        resolve(success);
+      } else {
+        reject(success);
+      }
+    }, 2000);
   });
 }
