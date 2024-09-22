@@ -19,6 +19,7 @@ function countStudents(filePath) {
         if (!fields[field]) {
           fields[field] = [];
         }
+
         fields[field].push(student[0]);
       }
     });
