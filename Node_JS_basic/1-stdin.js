@@ -4,7 +4,7 @@ console.log('Welcome to Holberton School, what is your name?');
 // Handle user input from stdin
 process.stdin.on('data', (input) => {
   const name = input.toString().trim();
-  console.log(`Your name is: ${name}`);
+  console.log(`Your name is: ${name}\r`);
 
   // Exit process after showing the name
   process.exit();
