@@ -8,15 +8,18 @@ const app = http.createServer(async (req, res) => {
 
   if (req.url === '/') {
     res.end('Hello Holberton School!');
-  }
-  if (req.url === '/students') {
+  } else if (req.url === '/students') {
     res.write('This is the list of our students\n');
     try {
       const data = await countStudents('database.csv');
+      res.end(`${data.join('\n')}`);
     } catch (error) {
       res.statusCode = 500;
       res.end(error.message);
     }
+  } else {
+    res.statusCode = 404;
+    res.end('Not Found');
   }
 });
 
