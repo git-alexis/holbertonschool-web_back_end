@@ -40,16 +40,16 @@ class DB:
         return user
 
     def find_user_by(self, **kwargs) -> User:
-            """ 
-            Take in arbitrary keyword arguments and
-            return the first row found in the users
-            """
-            try:
-                result = self._session.query(User).filter_by(**kwargs).first()
-                if result is None:
-                    raise NoResultFound
-                return result
-            except NoResultFound:
-                raise NoResultFound("No user found.")
-            except InvalidRequestError:
-                raise InvalidRequestError("Invalid query parameters.")
+        """
+        Take in arbitrary keyword arguments and
+        return the first row found in the users
+        """
+        try:
+            result = self._session.query(User).filter_by(**kwargs).first()
+            if result is None:
+                raise NoResultFound
+            return result
+        except NoResultFound:
+            raise NoResultFound("No user found.")
+        except InvalidRequestError:
+            raise InvalidRequestError("Invalid query parameters.")
