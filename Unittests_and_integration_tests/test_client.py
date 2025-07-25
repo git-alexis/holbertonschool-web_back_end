@@ -3,8 +3,9 @@
 """
 import unittest
 from parameterized import parameterized
-from unittest.mock import patch, PropertyMock
+from unittest.mock import patch, PropertyMock, Mock
 from client import GithubOrgClient
+from fixtures import TEST_PAYLOAD
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -60,3 +61,35 @@ class TestGithubOrgClient(unittest.TestCase):
         """
         result = GithubOrgClient.has_license(repo, license_key)
         self.assertEqual(result, expected)
+
+
+@parameterized_class(('org_payload', 'repos_payload',
+                      'expected_repos', 'apache2_repos'), TEST_PAYLOAD)
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """ Integration tests for the GithubOrgClient.public_repos method
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        """Initial setup for the integration tests.
+        """
+        cls.get_patcher = patch('requests.get')
+        cls.mock_get = cls.get_patcher.start()
+        cls.mock_response_org = Mock()
+        cls.mock_response_repos = Mock()
+        cls.mock_response_org.json.return_value = cls.org_payload
+        cls.mock_response_repos.json.return_value = cls.repos_payload
+        cls.mock_get.side_effect = [
+            cls.mock_response_org,
+            cls.mock_response_repos,
+        ]
+
+    @classmethod
+    def tearDownClass(cls):
+        """ Cleans up the patch after the tests
+        """
+        cls.get_patcher.stop()
+
+
+if __name__ == '__main__':
+    unittest.main()
