@@ -50,7 +50,3 @@ class TestGithubOrgClient(unittest.TestCase):
             self.assertEqual(gh_client.public_repos(), ["repo1", "repo2"])
             mocked_get_json.assert_called_once_with(mock_repos_url)
             mocked_public_repos_url.assert_called_once()
-
-    
-
-
