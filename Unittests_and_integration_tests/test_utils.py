@@ -2,10 +2,9 @@
 """ Unitest Module
 """
 import unittest
-from parameterized import parameterized
+import parameterized
 from utils import access_nested_map
 from unittest.mock import patch
-import requests
 from utils import get_json
 
 
