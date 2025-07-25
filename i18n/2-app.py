@@ -20,18 +20,21 @@ class Config:
 app.config.from_object(Config)
 
 
+@babel.localeselector
+def get_locale() -> str:
+    """ Select the best match language
+    """
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
+babel.init_app(app, locale_selector=get_locale)
+
+
 @app.route('/', methods=['GET'], strict_slashes=False)
 def welcome() -> str:
     """ Endpoint returning Hello world
     """
     return render_template("2-index.html")
-
-
-@babel.localeselector
-def get_locale() -> str:
-    """ Select the best match language
-    """
-    return request.accept_languages.best_match(["en", "fr"])
 
 
 if __name__ == "__main__":
