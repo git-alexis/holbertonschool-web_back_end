@@ -1,4 +1,4 @@
--- Create a table users with four columns (id, email, name, country)
+-- Creates a table users with four columns (id, email, name, country)
 -- Only if he doesn't exist
 CREATE TABLE IF NOT EXISTS users (
 	id INT NOT NULL AUTO_INCREMENT,
