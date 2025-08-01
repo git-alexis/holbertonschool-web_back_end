@@ -1,6 +1,6 @@
 -- Creates a stored procedure AddBonus that adds a new correction for a student
 DELIMITER $$
-CREATE PROCEDURE AddBonus( IN `user_id` INT, IN `project_name` VARCHAR(50), IN `score` INT)
+CREATE PROCEDURE AddBonus(IN user_id INT, IN project_name VARCHAR(50), IN score INT)
 BEGIN
     INSERT INTO projects(name)
     SELECT project_name WHERE NOT EXISTS( 
