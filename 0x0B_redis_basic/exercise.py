@@ -36,6 +36,9 @@ def call_history(method: Callable) -> Callable:
 
 
 class Cache:
+    """ Cache class that interacts with Redis to store and retrieve data,
+    while keeping track of history and usage statistics
+    """
     def __init__(self):
         """ Initialize the Redis client and flush the database
         """
@@ -84,4 +87,3 @@ def replay(method: Callable):
     print(f"{method_name} was called {int(call_count)} times:")
     for In, out in zip(inputs, outputs):
         print(f"{method_name}(*{In.decode('utf-8')}) -> {out.decode('utf-8')}")
-
