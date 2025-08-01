@@ -84,3 +84,4 @@ def replay(method: Callable):
     print(f"{method_name} was called {int(call_count)} times:")
     for In, out in zip(inputs, outputs):
         print(f"{method_name}(*{In.decode('utf-8')}) -> {out.decode('utf-8')}")
+
