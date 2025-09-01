@@ -27,6 +27,6 @@ describe('calculateNumber', function () {
     assert.strictEqual(calculateNumber('DIVIDE', -21.4, -29.9), 0.7);
   });
   it('should return Error when type=DIVIDE, a=21.4, b=4.5', function () {
-    assert.strictEqual(calculateNumber('DIVIDE', 21.4, 0), Error);
+    assert.strictEqual(calculateNumber('DIVIDE', 21.4, 0), "Error");
   });
 });
