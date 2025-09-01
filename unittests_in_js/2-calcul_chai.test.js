@@ -26,7 +26,7 @@ describe('calculateNumber', function () {
   it('should return 0.7 when type=DIVIDE, a=-21.4, b=-29.9', function () {
     expect(calculateNumber('DIVIDE', -21.4, -29.9)).to.equal(0.7);
   });
-  it('should return Error when type=DIVIDE, a=21.4, b=4.5', function () {
+  it('should return Error when type=DIVIDE, a=21.4, b=0', function () {
     expect(calculateNumber('DIVIDE', 21.4, 0)).to.equal(7);
   });
 });
