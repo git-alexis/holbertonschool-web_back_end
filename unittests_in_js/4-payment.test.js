@@ -13,7 +13,8 @@ describe('sendPaymentRequestToApi', function () {
 
     expect(stub.calledWith('SUM', 100, 20)).to.be.true;
 
-    expect(consoleSpy.calledWith('The total is: 10')).to.be.true;
+    const messages = consoleSpy.getCalls().map(call => call.args[0]);
+    expect(messages).to.include('The total is: 10');
 
     stub.restore();
     consoleSpy.restore();
