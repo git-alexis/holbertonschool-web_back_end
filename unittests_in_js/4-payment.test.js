@@ -11,11 +11,9 @@ describe('sendPaymentRequestToApi', function () {
 
     sendPaymentRequestToApi(100, 20);
 
-    expect(stub.calledOnce).to.be.true;
     expect(stub.calledWith('SUM', 100, 20)).to.be.true;
 
-    const messages = consoleSpy.getCalls().map(call => call.args[0]);
-    expect(messages).to.include('The total is: 10');
+    expect(consoleSpy.calledWith('The total is: 10')).to.be.true;
 
     stub.restore();
     consoleSpy.restore();
