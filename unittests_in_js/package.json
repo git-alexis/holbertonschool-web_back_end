@@ -3,6 +3,7 @@
     "test": "mocha \"*.test.js\""
   },
   "devDependencies": {
+    "chai": "^6.0.1",
     "mocha": "^11.7.1"
   }
 }
