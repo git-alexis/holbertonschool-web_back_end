@@ -28,7 +28,10 @@ class MRUCache(BaseCaching):
 
     def get(self, key):
         """ Retrieve an item from the cache """
-        if key is None:
+        if key is None or key not in self.cache_data:
             return None
+
+        self.keys_order.remove(key)
+        self.keys_order.append(key)
 
         return self.cache_data.get(key)
