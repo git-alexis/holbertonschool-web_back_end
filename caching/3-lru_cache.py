@@ -1,34 +1,43 @@
 #!/usr/bin/python3
-""" LRU caching module """
+"""LRU caching module"""
 
 BaseCaching = __import__('base_caching').BaseCaching
 
 
 class LRUCache(BaseCaching):
-    """ LRUCache class that inherits from BaseCaching """
+    """LRUCache class that inherits from BaseCaching"""
 
     def __init__(self):
-        """ Initialize """
+        """Initialize"""
         super().__init__()
-        self.keys_order = []
+        self.usage_order = []
 
     def put(self, key, item):
-        """ Add an item to the cache using LRU """
-        if key is not None and item is not None:
+        """Add an item in the cache using LRU"""
+        if key is None or item is None:
+            return
+
+        if key in self.cache_data:
             self.cache_data[key] = item
 
-            if key in self.keys_order:
-                self.keys_order.remove(key)
-            self.keys_order.append(key)
+            self.usage_order.remove(key)
+            self.usage_order.append(key)
+            return
 
-            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                first_key = self.keys_order.pop(0)
-                del self.cache_data[first_key]
-                print("DISCARD: {}".format(first_key))
+        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+            lru_key = self.usage_order.pop(0)
+            del self.cache_data[lru_key]
+            print("DISCARD: {}".format(lru_key))
+
+        self.cache_data[key] = item
+        self.usage_order.append(key)
 
     def get(self, key):
-        """ Retrieve an item from the cache """
-        if key is None:
+        """Get an item by key"""
+        if key is None or key not in self.cache_data:
             return None
 
-        return self.cache_data.get(key)
+        self.usage_order.remove(key)
+        self.usage_order.append(key)
+
+        return self.cache_data[key]
