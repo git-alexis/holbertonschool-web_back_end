@@ -3,7 +3,6 @@
 
 import logging
 import mysql.connector
-from mysql.connector.connection import MySQLConnection
 import os
 import re
 from typing import List
@@ -56,7 +55,7 @@ def get_logger() -> logging.Logger:
     return logger
 
 
-def get_db() -> MySQLConnection:
+def get_db() -> mysql.connector.connection.MySQLConnection:
     """ Return a connection to the MySQL database """
     return mysql.connector.connect(
         user=os.getenv("PERSONAL_DATA_DB_USERNAME", "root"),
