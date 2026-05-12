@@ -63,3 +63,27 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         host=os.getenv("PERSONAL_DATA_DB_HOST", "localhost"),
         database=os.getenv("PERSONAL_DATA_DB_NAME")
     )
+
+
+def main() -> None:
+    """ Retrieve and display filtered user data from the database """
+    database = get_db()
+    cursor = database.cursor()
+
+    cursor.execute("SELECT * FROM users;")
+
+    logger = get_logger()
+
+    for row in cursor:
+        message = "".join(
+            f"{field}={str(value)}; "
+            for field, value in zip(cursor.column_names, row)
+        )
+        logger.info(message)
+
+    cursor.close()
+    database.close()
+
+
+if __name__ == "__main__":
+    main()
