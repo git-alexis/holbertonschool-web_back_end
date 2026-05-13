@@ -23,7 +23,11 @@ if getenv('AUTH_TYPE') == 'auth':
 @app.before_request
 def before_request():
     """ Filter requests before processing """
-    excluded_paths = ['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']
+    excluded_paths = [
+        '/api/v1/status/',
+        '/api/v1/unauthorized/',
+        '/api/v1/forbidden/'
+    ]
 
     if auth is None:
         return
